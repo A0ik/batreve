@@ -1,37 +1,9 @@
 // ===================================
-// Initialize GSAP with Fallback System
+// VERSION SIMPLIFIÉE SANS GSAP
+// Tout s'affiche immédiatement
 // ===================================
 
-let gsapLoaded = false;
-let scrollTriggerLoaded = false;
-
-// Check if GSAP loaded
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        gsapLoaded = typeof gsap !== 'undefined';
-        scrollTriggerLoaded = typeof ScrollTrigger !== 'undefined';
-        
-        if (gsapLoaded && scrollTriggerLoaded) {
-            gsap.registerPlugin(ScrollTrigger);
-            console.log('✓ GSAP chargé avec succès');
-        } else {
-            console.warn('⚠️ GSAP non disponible - affichage sans animations');
-            // Fallback: rendre tout visible immédiatement
-            activateFallbackMode();
-        }
-    }, 1000);
-});
-
-// Fonction fallback pour afficher tout sans animations
-function activateFallbackMode() {
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, .faq-item, .timeline-item');
-    elements.forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.classList.add('animate');
-    });
-    console.log('✓ Mode fallback activé');
-}
+console.log('🚀 Batrêve - Version simplifiée chargée');
 
 // ===================================
 // Navigation & Scroll Effects
@@ -92,13 +64,11 @@ window.addEventListener('scroll', () => {
 });
 
 // ===================================
-// Hero Animations
+// Hero Animations - Compteurs
 // ===================================
 
-// Animate hero statistics counter - VERSION AMÉLIORÉE
 const statNumbers = document.querySelectorAll('.stat-number');
 
-// Fonction pour animer un compteur
 const animateCounter = (element) => {
     const target = parseInt(element.getAttribute('data-target'));
     const duration = 2000;
@@ -118,7 +88,7 @@ const animateCounter = (element) => {
     updateCounter();
 };
 
-// Observer pour déclencher l'animation
+// Observer pour déclencher l'animation des stats
 const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -133,176 +103,14 @@ const heroObserver = new IntersectionObserver((entries) => {
 const heroSection = document.querySelector('.hero');
 if (heroSection) {
     heroObserver.observe(heroSection);
-} else {
-    // Fallback si hero non trouvé
-    statNumbers.forEach(stat => {
-        stat.textContent = stat.getAttribute('data-target');
-    });
 }
-
-// ===================================
-// Scroll Animations with GSAP
-// ===================================
-
-// Services cards animation
-setTimeout(() => {
-    if (gsapLoaded && scrollTriggerLoaded) {
-        gsap.from('.service-card', {
-            scrollTrigger: {
-                trigger: '.services-grid',
-                start: 'top 80%',
-                end: 'bottom 20%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: 'power2.out'
-        });
-    } else {
-        // Fallback sans animation
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        });
-    }
-}, 1200);
-
-// Timeline items animation
-setTimeout(() => {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    if (gsapLoaded && scrollTriggerLoaded) {
-        timelineItems.forEach((item, index) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: 'power2.out',
-                onComplete: () => {
-                    item.classList.add('animate');
-                }
-            });
-        });
-    } else {
-        // Fallback
-        timelineItems.forEach(item => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-            item.classList.add('animate');
-        });
-    }
-}, 1200);
-
-// Portfolio items animation
-setTimeout(() => {
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    if (gsapLoaded && scrollTriggerLoaded) {
-        portfolioItems.forEach((item, index) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: 'power2.out',
-                onComplete: () => {
-                    item.classList.add('animate');
-                }
-            });
-        });
-    } else {
-        // Fallback
-        portfolioItems.forEach(item => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-            item.classList.add('animate');
-        });
-    }
-}, 1200);
-
-// Testimonials animation
-setTimeout(() => {
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    
-    if (gsapLoaded && scrollTriggerLoaded) {
-        testimonialCards.forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: 'power2.out',
-                onComplete: () => {
-                    card.classList.add('animate');
-                }
-            });
-        });
-    } else {
-        // Fallback
-        testimonialCards.forEach(card => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-            card.classList.add('animate');
-        });
-    }
-}, 1200);
-
-// FAQ items animation
-setTimeout(() => {
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    if (gsapLoaded && scrollTriggerLoaded) {
-        faqItems.forEach((item, index) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none'
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.5,
-                delay: index * 0.05,
-                ease: 'power2.out',
-                onComplete: () => {
-                    item.classList.add('animate');
-                }
-            });
-        });
-    } else {
-        // Fallback
-        faqItems.forEach(item => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-            item.classList.add('animate');
-        });
-    }
-}, 1200);
 
 // ===================================
 // FAQ Accordion
 // ===================================
 
 const faqQuestions = document.querySelectorAll('.faq-question');
-const faqItemsElements = document.querySelectorAll('.faq-item');
+const faqItems = document.querySelectorAll('.faq-item');
 
 faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
@@ -311,7 +119,7 @@ faqQuestions.forEach(question => {
         const isActive = faqItem.classList.contains('active');
         
         // Fermer tous les autres items
-        faqItemsElements.forEach(item => {
+        faqItems.forEach(item => {
             if (item !== faqItem) {
                 item.classList.remove('active');
                 item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
@@ -340,12 +148,6 @@ faqQuestions.forEach(question => {
         }
     });
 });
-
-// Ouvrir la première question par défaut (optionnel)
-if (faqQuestions.length > 0) {
-    // Décommenter la ligne suivante pour ouvrir la première question automatiquement
-    // faqQuestions[0].click();
-}
 
 // ===================================
 // Contact Form Handling
@@ -381,9 +183,7 @@ contactForm.addEventListener('submit', async (e) => {
         return;
     }
     
-    // Simulate form submission (replace with actual API call)
     try {
-        // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.innerHTML;
         submitButton.innerHTML = '<span>Envoi en cours...</span>';
@@ -392,20 +192,11 @@ contactForm.addEventListener('submit', async (e) => {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // Success
         showFormMessage('Merci pour votre demande ! Nous vous contacterons sous 24h.', 'success');
         contactForm.reset();
         
-        // Reset button
         submitButton.innerHTML = originalButtonText;
         submitButton.disabled = false;
-        
-        // Optional: Send to actual backend
-        // const response = await fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // });
         
     } catch (error) {
         showFormMessage('Une erreur est survenue. Veuillez réessayer.', 'error');
@@ -418,10 +209,8 @@ function showFormMessage(message, type) {
     formMessage.className = `form-message ${type}`;
     formMessage.style.display = 'block';
     
-    // Scroll to message
     formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     
-    // Auto-hide after 5 seconds
     setTimeout(() => {
         formMessage.style.display = 'none';
     }, 5000);
@@ -480,7 +269,6 @@ function validateInput(input) {
 const cookieBanner = document.getElementById('cookie-banner');
 const acceptCookies = document.getElementById('accept-cookies');
 
-// Check if cookies were already accepted
 if (!localStorage.getItem('cookiesAccepted')) {
     setTimeout(() => {
         cookieBanner.classList.add('show');
@@ -521,7 +309,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         
-        // Skip if it's just "#"
         if (href === '#') {
             e.preventDefault();
             return;
@@ -539,41 +326,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// ===================================
-// Lazy Loading Images
-// ===================================
-
-const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    lazyImages.forEach(img => imageObserver.observe(img));
-}
-
-// ===================================
-// Parallax Effect for Hero
-// ===================================
-
-const heroImage = document.querySelector('.hero-image');
-
-if (heroImage) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        heroImage.style.transform = `translateY(${parallax}px)`;
-    });
-}
 
 // ===================================
 // Newsletter Form
@@ -600,18 +352,10 @@ if (newsletterForm) {
         }
         
         try {
-            // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             alert('Merci de votre inscription ! Vous recevrez bientôt nos actualités.');
             emailInput.value = '';
-            
-            // Optional: Send to actual backend
-            // const response = await fetch('/api/newsletter', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ email })
-            // });
             
         } catch (error) {
             alert('Une erreur est survenue. Veuillez réessayer.');
@@ -621,32 +365,9 @@ if (newsletterForm) {
 }
 
 // ===================================
-// Performance Optimization
-// ===================================
-
-// Debounce function for scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to scroll-heavy operations
-window.addEventListener('scroll', debounce(() => {
-    // Additional scroll operations can go here
-}, 10));
-
-// ===================================
 // Accessibility Enhancements
 // ===================================
 
-// Keyboard navigation for mobile menu
 hamburger.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -654,7 +375,6 @@ hamburger.addEventListener('keydown', (e) => {
     }
 });
 
-// Focus trap for mobile menu
 const focusableElements = navMenu.querySelectorAll('a, button');
 const firstFocusable = focusableElements[0];
 const lastFocusable = focusableElements[focusableElements.length - 1];
@@ -678,29 +398,12 @@ navMenu.addEventListener('keydown', (e) => {
 });
 
 // ===================================
-// Console Message
-// ===================================
-
-console.log('%c🏠 Bienvenue sur Batrêve!', 'color: #1a4d2e; font-size: 24px; font-weight: bold;');
-console.log('%cSite développé avec passion et expertise.', 'color: #d4af37; font-size: 14px;');
-console.log('%cPour toute question: contact@batreve.fr', 'color: #4a4a4a; font-size: 12px;');
-
-// ===================================
 // Initialize
 // ===================================
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✓ Batrêve website loaded successfully');
-    
-    // Add loaded class to body
     document.body.classList.add('loaded');
-    
-    // Trigger any initial animations
-    gsap.from('.hero-content', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        delay: 0.3,
-        ease: 'power2.out'
-    });
 });
+
+console.log('✓ Script simplifié chargé - Tout doit être visible !');

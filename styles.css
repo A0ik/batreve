@@ -47,6 +47,31 @@
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
+/* ===================================
+   🚨 CRITIQUE: Force TOUT à être visible
+   =================================== */
+
+.service-card,
+.timeline-item,
+.portfolio-item,
+.testimonial-card,
+.faq-item,
+.hero-content,
+.section-header,
+.cta-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Pas de transform par défaut */
+.service-card,
+.timeline-item,
+.portfolio-item,
+.testimonial-card,
+.faq-item {
+    transform: none !important;
+}
+
 * {
     margin: 0;
     padding: 0;
