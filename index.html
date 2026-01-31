@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Batrêve - Rénovation de maison haut de gamme. Transformez votre espace avec nos experts en rénovation. Devis gratuit et accompagnement sur-mesure.">
+    <meta name="keywords" content="rénovation maison, travaux, architecture intérieur, design, rénovation complète">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Batrêve - Votre Maison Réinventée">
+    <meta property="og:description" content="Experts en rénovation haut de gamme. Du rêve à la réalité.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Batrêve",
+      "description": "Rénovation de maison haut de gamme",
+      "url": "https://www.batreve.fr",
+      "telephone": "+33-1-23-45-67-89",
+      "priceRange": "€€€",
+      "areaServed": "France"
+    }
+    </script>
+    
+    <title>Batrêve - Rénovation de Maison Haut de Gamme | Du Rêve à la Réalité</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href="#privacy">politique de confidentialité</a>.</p>
+            <button id="accept-cookies" class="btn-cookie">Accepter</button>
+        </div>
+    </div>
+
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">Batrêve</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#process" class="nav-link">Notre Méthode</a></li>
+                <li><a href="#realisations" class="nav-link">Réalisations</a></li>
+                <li><a href="#temoignages" class="nav-link">Témoignages</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Devis Gratuit</a></li>
+            </ul>
+            
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Scroll Progress Indicator -->
+        <div class="scroll-progress" id="scroll-progress"></div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80" 
+                     alt="Intérieur moderne rénové" 
+                     class="hero-image"
+                     loading="eager">
+            </div>
+            
+            <div class="container hero-content">
+                <div class="hero-badge">Excellence depuis 2010</div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">Transformez</span>
+                    <span class="hero-title-line">Votre Espace</span>
+                    <span class="hero-title-accent">en Chef-d'Œuvre</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Rénovation haut de gamme, où chaque détail compte.<br>
+                    Du premier croquis à la dernière finition.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-large">
+                        <span>Commencer Mon Projet</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10h12m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                    <a href="#realisations" class="btn btn-secondary btn-large">
+                        Voir Nos Réalisations
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="250">0</div>
+                        <div class="stat-label">Projets Réalisés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="13">0</div>
+                        <div class="stat-label">Ans d'Expertise</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Découvrir</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Nos Expertises</span>
+                    <h2 class="section-title">Services de Rénovation</h2>
+                    <p class="section-subtitle">
+                        Une gamme complète de services pour donner vie à vos projets les plus ambitieux
+                    </p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M8 40V18L24 8L40 18V40H28V28H20V40H8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Rénovation Complète</h3>
+                        <p class="service-description">
+                            Transformation totale de votre espace. Architecture, structure, design intérieur – nous gérons tout de A à Z pour créer la maison de vos rêves.
+                        </p>
+                        <ul class="service-features">
+                            <li>Étude architecturale complète</li>
+                            <li>Gros œuvre et second œuvre</li>
+                            <li>Design d'intérieur personnalisé</li>
+                            <li>Coordination de tous les corps de métier</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            Découvrir
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect x="8" y="12" width="32" height="28" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 8V12M32 8V12M8 20H40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Cuisine & Salle de Bain</h3>
+                        <p class="service-description">
+                            Espaces de vie premium combinant fonctionnalité et esthétique. Matériaux nobles, équipements haut de gamme et design sur-mesure.
+                        </p>
+                        <ul class="service-features">
+                            <li>Conception 3D personnalisée</li>
+                            <li>Mobilier sur-mesure</li>
+                            <li>Équipements haut de gamme</li>
+                            <li>Installation complète</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            Découvrir
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+                                <path d="M24 16V24L30 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Extension & Surélévation</h3>
+                        <p class="service-description">
+                            Agrandissez votre espace de vie sans déménager. Solutions innovantes pour optimiser votre bien immobilier et augmenter sa valeur.
+                        </p>
+                        <ul class="service-features">
+                            <li>Étude de faisabilité</li>
+                            <li>Démarches administratives</li>
+                            <li>Construction et intégration</li>
+                            <li>Optimisation énergétique</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            Découvrir
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M24 8L8 16V32L24 40L40 32V16L24 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M24 24V40M24 24L8 16M24 24L40 16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Rénovation Énergétique</h3>
+                        <p class="service-description">
+                            Améliorez votre confort tout en réduisant vos factures. Isolation, chauffage, ventilation – solutions durables et performantes.
+                        </p>
+                        <ul class="service-features">
+                            <li>Audit énergétique complet</li>
+                            <li>Isolation thermique avancée</li>
+                            <li>Systèmes de chauffage modernes</li>
+                            <li>Aides et subventions</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            Découvrir
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="process">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Notre Approche</span>
+                    <h2 class="section-title">Un Processus Éprouvé</h2>
+                    <p class="section-subtitle">
+                        De la première consultation à la remise des clés, nous vous accompagnons à chaque étape
+                    </p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="timeline-number">01</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Consultation & Analyse</h3>
+                            <p class="timeline-description">
+                                Rencontre initiale pour comprendre vos besoins, vos goûts et votre budget. Visite détaillée du site et analyse technique complète.
+                            </p>
+                            <ul class="timeline-points">
+                                <li>Rendez-vous personnalisé gratuit</li>
+                                <li>Étude de faisabilité</li>
+                                <li>Relevé des mesures</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="timeline-number">02</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Conception & Design</h3>
+                            <p class="timeline-description">
+                                Nos architectes et designers créent des plans détaillés et des visualisations 3D pour donner vie à votre vision.
+                            </p>
+                            <ul class="timeline-points">
+                                <li>Plans architecturaux complets</li>
+                                <li>Rendus 3D réalistes</li>
+                                <li>Sélection des matériaux</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="timeline-number">03</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Devis & Planification</h3>
+                            <p class="timeline-description">
+                                Devis détaillé et transparent avec planning précis. Nous coordonnons tous les intervenants pour une exécution fluide.
+                            </p>
+                            <ul class="timeline-points">
+                                <li>Devis détaillé ligne par ligne</li>
+                                <li>Calendrier de réalisation</li>
+                                <li>Coordination des artisans</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="timeline-number">04</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Réalisation</h3>
+                            <p class="timeline-description">
+                                Nos équipes qualifiées concrétisent votre projet avec un suivi rigoureux et des points réguliers sur l'avancement.
+                            </p>
+                            <ul class="timeline-points">
+                                <li>Travaux supervisés quotidiennement</li>
+                                <li>Communication transparente</li>
+                                <li>Respect des délais</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="timeline-number">05</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Livraison & Suivi</h3>
+                            <p class="timeline-description">
+                                Réception des travaux, nettoyage complet et garanties. Nous restons à votre écoute après la livraison.
+                            </p>
+                            <ul class="timeline-points">
+                                <li>Visite de réception détaillée</li>
+                                <li>Garanties décennales</li>
+                                <li>SAV réactif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio/Realisations Section -->
+        <section id="realisations" class="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title">Nos Réalisations</h2>
+                    <p class="section-subtitle">
+                        Découvrez quelques-uns de nos projets récents qui témoignent de notre expertise
+                    </p>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-item portfolio-large">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80" 
+                             alt="Rénovation appartement haussmannien" 
+                             loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-category">Rénovation Complète</span>
+                                <h3 class="portfolio-title">Appartement Haussmannien Paris 16e</h3>
+                                <p class="portfolio-description">200m² - Rénovation complète alliant charme de l'ancien et confort moderne</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=600&q=80" 
+                             alt="Cuisine moderne" 
+                             loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-category">Cuisine</span>
+                                <h3 class="portfolio-title">Cuisine Contemporaine</h3>
+                                <p class="portfolio-description">Design épuré avec îlot central</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" 
+                             alt="Salle de bain luxe" 
+                             loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-category">Salle de Bain</span>
+                                <h3 class="portfolio-title">Suite Parentale Spa</h3>
+                                <p class="portfolio-description">Ambiance zen avec douche à l'italienne</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80" 
+                             alt="Extension maison" 
+                             loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-category">Extension</span>
+                                <h3 class="portfolio-title">Extension Verrière</h3>
+                                <p class="portfolio-description">40m² supplémentaires de lumière</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item portfolio-wide">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=900&q=80" 
+                             alt="Loft industriel" 
+                             loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-category">Loft</span>
+                                <h3 class="portfolio-title">Loft Industriel Reconverti</h3>
+                                <p class="portfolio-description">150m² - Ancien atelier transformé en loft design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="temoignages" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Témoignages</span>
+                    <h2 class="section-title">Ils Nous Font Confiance</h2>
+                    <p class="section-subtitle">
+                        Les retours de nos clients sont notre plus belle récompense
+                    </p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Batrêve a transformé notre appartement au-delà de nos espérances. L'équipe est professionnelle, à l'écoute et d'une créativité remarquable. Le résultat est tout simplement magnifique."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=1" alt="Sophie Martin" loading="lazy">
+                            <div>
+                                <div class="author-name">Sophie Martin</div>
+                                <div class="author-project">Rénovation Appartement • Paris 15e</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Du premier rendez-vous à la livraison, tout s'est déroulé dans les temps et le budget prévu. La communication était excellente et les finitions impeccables. Je recommande vivement !"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=12" alt="Thomas Dubois" loading="lazy">
+                            <div>
+                                <div class="author-name">Thomas Dubois</div>
+                                <div class="author-project">Extension Maison • Neuilly-sur-Seine</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Une équipe extraordinaire qui a su comprendre notre vision et la concrétiser avec brio. Les artisans sont des experts dans leur domaine. Notre cuisine est devenue la pièce maîtresse de la maison."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=5" alt="Marie Lefebvre" loading="lazy">
+                            <div>
+                                <div class="author-name">Marie Lefebvre</div>
+                                <div class="author-project">Cuisine Sur-Mesure • Versailles</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Projet complexe de rénovation énergétique géré de main de maître. Économies d'énergie au rendez-vous et confort thermique incomparable. Merci pour votre professionnalisme."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=33" alt="Pierre Durand" loading="lazy">
+                            <div>
+                                <div class="author-name">Pierre Durand</div>
+                                <div class="author-project">Rénovation Énergétique • Saint-Cloud</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "La réactivité et la disponibilité de l'équipe Batrêve nous ont vraiment rassurés tout au long du projet. Les délais ont été respectés et le résultat dépasse nos attentes."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=9" alt="Isabelle Mercier" loading="lazy">
+                            <div>
+                                <div class="author-name">Isabelle Mercier</div>
+                                <div class="author-project">Salle de Bain Luxe • Boulogne</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Nous avions un projet ambitieux et Batrêve a relevé le défi avec brio. Leur expertise technique combinée à leur sens esthétique a donné un résultat exceptionnel."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=14" alt="Laurent Bernard" loading="lazy">
+                            <div>
+                                <div class="author-name">Laurent Bernard</div>
+                                <div class="author-project">Loft Complet • Levallois-Perret</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <div class="trust-item">
+                        <div class="trust-icon">✓</div>
+                        <div class="trust-text">Garantie Décennale</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">★</div>
+                        <div class="trust-text">Qualibat Certifié</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">♦</div>
+                        <div class="trust-text">RGE Reconnu</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">✓</div>
+                        <div class="trust-text">Assurance RC Pro</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Questions Fréquentes</span>
+                    <h2 class="section-title">Vos Questions, Nos Réponses</h2>
+                    <p class="section-subtitle">
+                        Tout ce que vous devez savoir sur nos services de rénovation
+                    </p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Combien de temps prend un projet de rénovation ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>La durée varie selon l'ampleur du projet. Une cuisine nécessite généralement 3-4 semaines, une salle de bain 2-3 semaines, et une rénovation complète d'appartement 2-4 mois. Nous établissons un planning précis dès le départ et nous nous engageons à le respecter.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Quel est le budget moyen pour une rénovation ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Le budget dépend de nombreux facteurs : surface, type de travaux, matériaux choisis, etc. En moyenne, comptez 800-1200€/m² pour une rénovation complète, 10 000-25 000€ pour une cuisine, et 8 000-15 000€ pour une salle de bain. Nous proposons toujours un devis détaillé et personnalisé gratuit.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Dois-je quitter mon logement pendant les travaux ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Cela dépend de l'ampleur des travaux. Pour des projets partiels (cuisine, salle de bain), vous pouvez généralement rester sur place. Pour une rénovation complète, nous recommandons de libérer le logement pour plus de confort et d'efficacité. Nous organisons les travaux pour minimiser les désagréments.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Proposez-vous des garanties ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Oui, tous nos travaux sont couverts par la garantie décennale obligatoire pour les travaux de gros œuvre, la garantie biennale pour les équipements, et la garantie de parfait achèvement d'un an. De plus, nous disposons d'une assurance responsabilité civile professionnelle complète.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Comment se déroule le premier rendez-vous ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Le premier rendez-vous est gratuit et sans engagement. Nous visitons votre bien, discutons de vos besoins, attentes et budget. Nous prenons les mesures nécessaires et vous conseillons sur les possibilités. Sous 7 jours, vous recevez un devis détaillé et des premières esquisses si nécessaire.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Aidez-vous pour les démarches administratives ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolument ! Nous vous accompagnons dans toutes les démarches : déclaration préalable, permis de construire, autorisations de copropriété, demandes de subventions (MaPrimeRénov', Éco-PTZ, etc.). Nous avons l'habitude de ces procédures et facilitons grandement le processus.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Puis-je choisir mes propres matériaux ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bien sûr ! Nous vous conseillons et vous guidons dans le choix des matériaux, mais la décision finale vous appartient. Nous travaillons avec de nombreux fournisseurs haut de gamme et pouvons nous adapter à vos coups de cœur. Nous vous aidons à trouver le meilleur rapport qualité-prix pour votre budget.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Intervenez-vous dans toute la France ?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nous intervenons principalement en Île-de-France (Paris et petite couronne). Pour des projets exceptionnels d'envergure, nous pouvons étudier des demandes dans d'autres régions. N'hésitez pas à nous contacter pour discuter de votre projet, où qu'il se trouve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="contact" class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <div class="cta-text">
+                        <h2 class="cta-title">Prêt à Transformer Votre Espace ?</h2>
+                        <p class="cta-subtitle">
+                            Obtenez un devis gratuit et personnalisé pour votre projet de rénovation.<br>
+                            Nos experts vous répondent sous 24h.
+                        </p>
+                        <div class="cta-features">
+                            <div class="cta-feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>Devis gratuit sous 48h</span>
+                            </div>
+                            <div class="cta-feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>Premier RDV sans engagement</span>
+                            </div>
+                            <div class="cta-feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>Visualisation 3D incluse</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nom complet *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Téléphone *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">Ville</label>
+                                    <input type="text" id="city" name="city">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project">Type de projet *</label>
+                                <select id="project" name="project" required>
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="renovation-complete">Rénovation Complète</option>
+                                    <option value="cuisine">Cuisine</option>
+                                    <option value="salle-de-bain">Salle de Bain</option>
+                                    <option value="extension">Extension</option>
+                                    <option value="energetique">Rénovation Énergétique</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Décrivez votre projet *</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">
+                                    J'accepte d'être contacté par Batrêve et j'ai lu la <a href="#privacy">politique de confidentialité</a> *
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large btn-full">
+                                <span>Envoyer ma demande</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10h12m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            
+                            <div id="form-message" class="form-message"></div>
+                        </form>
+                        
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b5854554f5a584f7b595a4f495e4d5e155d49">[email&#160;protected]</a></span>
+                            </div>
+                            <div class="contact-info-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>+33 1 23 45 67 89</span>
+                            </div>
+                            <div class="contact-info-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>Paris & Île-de-France</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="#hero" class="footer-logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">Batrêve</span>
+                    </a>
+                    <p class="footer-description">
+                        Experts en rénovation haut de gamme depuis 2010.<br>
+                        Du rêve à la réalité.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.182-.78 1.172-4.97 1.172-4.97s-.299-.6-.299-1.486c0-1.39.806-2.428 1.81-2.428.852 0 1.264.64 1.264 1.408 0 .858-.545 2.14-.828 3.33-.236.995.5 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.068-4.176-4.068-2.845 0-4.516 2.135-4.516 4.34 0 .859.331 1.781.745 2.281a.3.3 0 01.069.288l-.278 1.133c-.044.183-.145.223-.335.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.965-.525-2.291-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Rénovation Complète</a></li>
+                        <li><a href="#services">Cuisine & Salle de Bain</a></li>
+                        <li><a href="#services">Extension & Surélévation</a></li>
+                        <li><a href="#services">Rénovation Énergétique</a></li>
+                        <li><a href="#services">Architecture d'Intérieur</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Entreprise</h3>
+                    <ul class="footer-links">
+                        <li><a href="#process">Notre Approche</a></li>
+                        <li><a href="#realisations">Nos Réalisations</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Légal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#privacy">Politique de Confidentialité</a></li>
+                        <li><a href="#terms">Conditions Générales</a></li>
+                        <li><a href="#cookies">Politique des Cookies</a></li>
+                        <li><a href="#mentions">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-newsletter-text">
+                        Inspirations, conseils et actualités de la rénovation
+                    </p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Votre email" aria-label="Email pour newsletter">
+                        <button type="submit" aria-label="S'inscrire">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10h12m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Batrêve. Tous droits réservés. | RCS Paris 123 456 789 | Assurance Décennale n°123456</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Retour en haut">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 15l-6-6-6 6" stroke="currentColor" strok
