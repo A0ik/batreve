@@ -5,27 +5,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // ===================================
-// Fallback si GSAP ne charge pas
-// ===================================
-
-window.addEventListener('load', () => {
-    // Attendre 2 secondes pour GSAP
-    setTimeout(() => {
-        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            console.warn('⚠️ GSAP non chargé - affichage sans animations');
-            
-            // Rendre tout visible immédiatement
-            const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, .faq-item, .timeline-item');
-            elements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-                el.classList.add('animate');
-            });
-        }
-    }, 2000);
-});
-
-// ===================================
 // Navigation & Scroll Effects
 // ===================================
 
@@ -128,26 +107,20 @@ if (heroSection) {
 // Scroll Animations with GSAP
 // ===================================
 
-// Services cards animation with fallback
-const serviceCards = document.querySelectorAll('.service-card');
-if (serviceCards.length > 0 && typeof gsap !== 'undefined') {
-    gsap.from('.service-card', {
-        scrollTrigger: {
-            trigger: '.services-grid',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: 'power2.out'
-    });
-} else {
-    // Fallback: rendre visible immédiatement
-    serviceCards.forEach(card => card.style.opacity = '1');
-}
+// Services cards animation
+gsap.from('.service-card', {
+    scrollTrigger: {
+        trigger: '.services-grid',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse'
+    },
+    y: 50,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.2,
+    ease: 'power2.out'
+});
 
 // Timeline items animation
 const timelineItems = document.querySelectorAll('.timeline-item');
