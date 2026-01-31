@@ -47,6 +47,20 @@
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
+/* ===================================
+   CORRECTION: Force visibility of all elements
+   =================================== */
+
+.service-card,
+.timeline-item,
+.portfolio-item,
+.testimonial-card,
+.faq-item {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
 * {
     margin: 0;
     padding: 0;

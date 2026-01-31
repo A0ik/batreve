@@ -5,6 +5,27 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // ===================================
+// Fallback si GSAP ne charge pas
+// ===================================
+
+window.addEventListener('load', () => {
+    // Attendre 2 secondes pour GSAP
+    setTimeout(() => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            console.warn('⚠️ GSAP non chargé - affichage sans animations');
+            
+            // Rendre tout visible immédiatement
+            const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, .faq-item, .timeline-item');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.classList.add('animate');
+            });
+        }
+    }, 2000);
+});
+
+// ===================================
 // Navigation & Scroll Effects
 // ===================================
 
@@ -66,61 +87,70 @@ window.addEventListener('scroll', () => {
 // Hero Animations
 // ===================================
 
-// Animate hero statistics counter
-const animateCounter = (element) => {
-    const target = parseInt(element.getAttribute('data-target'));
-    const duration = 2000;
-    const increment = target / (duration / 16);
-    let current = 0;
+// Animate hero statistics counter - VERSION SIMPLIFIÉE
+const statNumbers = document.querySelectorAll('.stat-number');
+statNumbers.forEach(stat => {
+    const target = parseInt(stat.getAttribute('data-target'));
+    stat.textContent = target; // Afficher immédiatement
     
-    const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-            element.textContent = Math.floor(current);
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    };
-    
-    updateCounter();
-};
-
-// Trigger counter animation when hero is visible
-const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            document.querySelectorAll('.stat-number').forEach(stat => {
-                animateCounter(stat);
+    // Animation optionnelle si disponible
+    if (typeof gsap !== 'undefined') {
+        const animateCounter = (element) => {
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        };
+        
+        // Trigger counter animation when hero is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(stat);
+                    heroObserver.disconnect();
+                }
             });
-            heroObserver.disconnect();
-        }
-    });
-}, { threshold: 0.5 });
-
-const heroSection = document.querySelector('.hero');
-if (heroSection) {
-    heroObserver.observe(heroSection);
-}
+        }, { threshold: 0.5 });
+        
+        heroObserver.observe(stat);
+    }
+});
 
 // ===================================
 // Scroll Animations with GSAP
 // ===================================
 
-// Services cards animation
-gsap.from('.service-card', {
-    scrollTrigger: {
-        trigger: '.services-grid',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
-    },
-    y: 50,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.2,
-    ease: 'power2.out'
-});
+// Services cards animation with fallback
+const serviceCards = document.querySelectorAll('.service-card');
+if (serviceCards.length > 0 && typeof gsap !== 'undefined') {
+    gsap.from('.service-card', {
+        scrollTrigger: {
+            trigger: '.services-grid',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out'
+    });
+} else {
+    // Fallback: rendre visible immédiatement
+    serviceCards.forEach(card => card.style.opacity = '1');
+}
 
 // Timeline items animation
 const timelineItems = document.querySelectorAll('.timeline-item');
