@@ -47,20 +47,6 @@
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
-/* ===================================
-   CORRECTION: Force visibility of all elements
-   =================================== */
-
-.service-card,
-.timeline-item,
-.portfolio-item,
-.testimonial-card,
-.faq-item {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -1040,24 +1026,27 @@ section {
 .faq-icon {
     flex-shrink: 0;
     transition: transform var(--transition-base);
+    color: var(--primary);
 }
 
 .faq-item.active .faq-icon {
     transform: rotate(180deg);
+    color: var(--accent);
 }
 
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition-slow);
+    transition: max-height 0.4s ease;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 500px;
+    max-height: 1000px; /* Grande valeur pour s'adapter à tout contenu */
 }
 
 .faq-answer p {
     padding-bottom: var(--spacing-md);
+    padding-top: var(--spacing-sm);
     color: var(--text-body);
     line-height: 1.7;
 }

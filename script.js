@@ -1,29 +1,37 @@
 // ===================================
-// Initialize GSAP
+// Initialize GSAP with Fallback System
 // ===================================
 
-gsap.registerPlugin(ScrollTrigger);
+let gsapLoaded = false;
+let scrollTriggerLoaded = false;
 
-// ===================================
-// Fallback si GSAP ne charge pas
-// ===================================
-
+// Check if GSAP loaded
 window.addEventListener('load', () => {
-    // Attendre 2 secondes pour GSAP
     setTimeout(() => {
-        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            console.warn('⚠️ GSAP non chargé - affichage sans animations');
-            
-            // Rendre tout visible immédiatement
-            const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, .faq-item, .timeline-item');
-            elements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-                el.classList.add('animate');
-            });
+        gsapLoaded = typeof gsap !== 'undefined';
+        scrollTriggerLoaded = typeof ScrollTrigger !== 'undefined';
+        
+        if (gsapLoaded && scrollTriggerLoaded) {
+            gsap.registerPlugin(ScrollTrigger);
+            console.log('✓ GSAP chargé avec succès');
+        } else {
+            console.warn('⚠️ GSAP non disponible - affichage sans animations');
+            // Fallback: rendre tout visible immédiatement
+            activateFallbackMode();
         }
-    }, 2000);
+    }, 1000);
 });
+
+// Fonction fallback pour afficher tout sans animations
+function activateFallbackMode() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, .faq-item, .timeline-item');
+    elements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.classList.add('animate');
+    });
+    console.log('✓ Mode fallback activé');
+}
 
 // ===================================
 // Navigation & Scroll Effects
@@ -87,175 +95,257 @@ window.addEventListener('scroll', () => {
 // Hero Animations
 // ===================================
 
-// Animate hero statistics counter - VERSION SIMPLIFIÉE
+// Animate hero statistics counter - VERSION AMÉLIORÉE
 const statNumbers = document.querySelectorAll('.stat-number');
-statNumbers.forEach(stat => {
-    const target = parseInt(stat.getAttribute('data-target'));
-    stat.textContent = target; // Afficher immédiatement
+
+// Fonction pour animer un compteur
+const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
     
-    // Animation optionnelle si disponible
-    if (typeof gsap !== 'undefined') {
-        const animateCounter = (element) => {
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-            
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    element.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            };
-            
-            updateCounter();
-        };
-        
-        // Trigger counter animation when hero is visible
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(stat);
-                    heroObserver.disconnect();
-                }
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
+};
+
+// Observer pour déclencher l'animation
+const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            statNumbers.forEach(stat => {
+                animateCounter(stat);
             });
-        }, { threshold: 0.5 });
-        
-        heroObserver.observe(stat);
-    }
-});
+            heroObserver.disconnect();
+        }
+    });
+}, { threshold: 0.3 });
+
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    heroObserver.observe(heroSection);
+} else {
+    // Fallback si hero non trouvé
+    statNumbers.forEach(stat => {
+        stat.textContent = stat.getAttribute('data-target');
+    });
+}
 
 // ===================================
 // Scroll Animations with GSAP
 // ===================================
 
-// Services cards animation with fallback
-const serviceCards = document.querySelectorAll('.service-card');
-if (serviceCards.length > 0 && typeof gsap !== 'undefined') {
-    gsap.from('.service-card', {
-        scrollTrigger: {
-            trigger: '.services-grid',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: 'power2.out'
-    });
-} else {
-    // Fallback: rendre visible immédiatement
-    serviceCards.forEach(card => card.style.opacity = '1');
-}
+// Services cards animation
+setTimeout(() => {
+    if (gsapLoaded && scrollTriggerLoaded) {
+        gsap.from('.service-card', {
+            scrollTrigger: {
+                trigger: '.services-grid',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: 'power2.out'
+        });
+    } else {
+        // Fallback sans animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+    }
+}, 1200);
 
 // Timeline items animation
-const timelineItems = document.querySelectorAll('.timeline-item');
-timelineItems.forEach((item, index) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'power2.out',
-        onComplete: () => {
+setTimeout(() => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    if (gsapLoaded && scrollTriggerLoaded) {
+        timelineItems.forEach((item, index) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: 'power2.out',
+                onComplete: () => {
+                    item.classList.add('animate');
+                }
+            });
+        });
+    } else {
+        // Fallback
+        timelineItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
             item.classList.add('animate');
-        }
-    });
-});
+        });
+    }
+}, 1200);
 
 // Portfolio items animation
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-portfolioItems.forEach((item, index) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'power2.out',
-        onComplete: () => {
+setTimeout(() => {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    if (gsapLoaded && scrollTriggerLoaded) {
+        portfolioItems.forEach((item, index) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: 'power2.out',
+                onComplete: () => {
+                    item.classList.add('animate');
+                }
+            });
+        });
+    } else {
+        // Fallback
+        portfolioItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
             item.classList.add('animate');
-        }
-    });
-});
+        });
+    }
+}, 1200);
 
 // Testimonials animation
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-testimonialCards.forEach((card, index) => {
-    gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'power2.out',
-        onComplete: () => {
+setTimeout(() => {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    if (gsapLoaded && scrollTriggerLoaded) {
+        testimonialCards.forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: 'power2.out',
+                onComplete: () => {
+                    card.classList.add('animate');
+                }
+            });
+        });
+    } else {
+        // Fallback
+        testimonialCards.forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
             card.classList.add('animate');
-        }
-    });
-});
+        });
+    }
+}, 1200);
 
 // FAQ items animation
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach((item, index) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 90%',
-            toggleActions: 'play none none none'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.5,
-        delay: index * 0.05,
-        ease: 'power2.out',
-        onComplete: () => {
+setTimeout(() => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (gsapLoaded && scrollTriggerLoaded) {
+        faqItems.forEach((item, index) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: 'power2.out',
+                onComplete: () => {
+                    item.classList.add('animate');
+                }
+            });
+        });
+    } else {
+        // Fallback
+        faqItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
             item.classList.add('animate');
-        }
-    });
-});
+        });
+    }
+}, 1200);
 
 // ===================================
 // FAQ Accordion
 // ===================================
 
 const faqQuestions = document.querySelectorAll('.faq-question');
+const faqItemsElements = document.querySelectorAll('.faq-item');
 
 faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
         const faqItem = question.parentElement;
+        const faqAnswer = faqItem.querySelector('.faq-answer');
         const isActive = faqItem.classList.contains('active');
         
-        // Close all FAQ items
-        faqItems.forEach(item => {
-            item.classList.remove('active');
-            item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        // Fermer tous les autres items
+        faqItemsElements.forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+                item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                const answer = item.querySelector('.faq-answer');
+                answer.style.maxHeight = null;
+            }
         });
         
-        // Open clicked item if it wasn't active
+        // Toggle l'item cliqué
         if (!isActive) {
             faqItem.classList.add('active');
             question.setAttribute('aria-expanded', 'true');
+            faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
+        } else {
+            faqItem.classList.remove('active');
+            question.setAttribute('aria-expanded', 'false');
+            faqAnswer.style.maxHeight = null;
+        }
+    });
+    
+    // Keyboard accessibility
+    question.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            question.click();
         }
     });
 });
+
+// Ouvrir la première question par défaut (optionnel)
+if (faqQuestions.length > 0) {
+    // Décommenter la ligne suivante pour ouvrir la première question automatiquement
+    // faqQuestions[0].click();
+}
 
 // ===================================
 // Contact Form Handling
